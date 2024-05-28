@@ -1,1 +1,11 @@
+langchain
+pypdf
+langchain-community
+langchain-cli
+langchain-openai
+chromadb
+langchain-chroma
+pdfplumber
+sentence-transformers
+FlagEmbedding
 torch

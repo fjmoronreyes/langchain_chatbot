@@ -9,3 +9,5 @@ pdfplumber
 sentence-transformers
 FlagEmbedding
 torch
+bitsandbytes
+accelerate

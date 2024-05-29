@@ -7,6 +7,7 @@ from utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
 class TextExtractor:
     def load_pdfs(self, folder_path: str) -> List[Document]:
         documents = []
@@ -17,8 +18,10 @@ class TextExtractor:
                     for page in pdf.pages:
                         text = page.extract_text()
                         if text:
-                            documents.append(Document(page_content=text))
-        logger.info(f"{len(documents)} documents have been loaded from {folder_path}.")
+                            documents.append(
+                                Document(page_content=text)
+                                )
+        logger.info(f"{len(documents)} docs loaded from {folder_path}.")
         return documents
 
     def get_chunks(self, folder_path: str) -> List[Document]:
@@ -36,12 +39,12 @@ class TextExtractor:
         return unique_chunks
 
     def remove_duplicates(self, chunks: List[Document]) -> List[Document]:
-        #this is not a good solution when scaling
+        # this is not a good solution when scaling, sorry!
         seen = set()
         unique_chunks = []
         for chunk in chunks:
             if chunk.page_content not in seen:
                 unique_chunks.append(chunk)
                 seen.add(chunk.page_content)
-        logger.info(f"Filtered {len(unique_chunks)} unique chunks from {len(chunks)} total chunks.")
+        logger.info(f"Filtered {len(unique_chunks)}")
         return unique_chunks

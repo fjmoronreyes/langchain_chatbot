@@ -10,17 +10,17 @@ logger = setup_logger(__name__)
 TOKEN = "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"
 
 class Inference:
-    def __init__(self, chroma_path: str, model_name: str = "google/gemma-1.1-2b-it"):
-        self.chroma_db = ChromaVectorDB(chroma_path, CustomEmbeddings())
+    def __init__(self, folder_path: str, chroma_path: str = "chroma", model_name: str = "google/gemma-1.1-2b-it"):
+        self.chroma_db = ChromaVectorDB(CustomEmbeddings(), folder_path, chroma_path)
         self.qa_prompt = SYSTEM_QA_PROMPT
         
         quantization_config = BitsAndBytesConfig(load_in_4bit=True)
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=TOKEN)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, token=TOKEN)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             device_map="auto",
             quantization_config=quantization_config,
-            use_auth_token=TOKEN,
+            token=TOKEN,
         )
         
         self.generator = pipeline(
@@ -60,11 +60,8 @@ class Inference:
         return response
 
 if __name__ == "__main__":
-    chroma_path = "chroma"
     folder_path = "../data"
-
-    inference = Inference(chroma_path)
-    inference.chroma_db.create_db(folder_path)
+    inference = Inference(folder_path)
 
     query = "Fecha de lanzamiento del juego Stellar Blade para la consola PlayStation 5"
     response = inference.generate(query)

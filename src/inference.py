@@ -44,7 +44,6 @@ class Inference:
 
         context = " ".join(results)
 
-        # Create the chat prompt with query and context
         chat_prompt = self.qa_prompt.format(input=input, context=context)
 
         chat = [

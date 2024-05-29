@@ -1,5 +1,4 @@
 langchain
-pypdf
 langchain-community
 langchain-cli
 langchain-openai
@@ -8,6 +7,9 @@ langchain-chroma
 pdfplumber
 sentence-transformers
 FlagEmbedding
-torch
+torch --index-url https://download.pytorch.org/whl/cu118 #be careful with cuda dependencies. If this is a problem, use CPU but could be too slow
+torchvision --index-url https://download.pytorch.org/whl/cu118
+torchaudio --index-url https://download.pytorch.org/whl/cu118
 bitsandbytes
 accelerate
+gradio

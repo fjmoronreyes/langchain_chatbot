@@ -1,5 +1,6 @@
 import logging
 
+
 def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     logger = logging.getLogger(name)
     logger.setLevel(level)
@@ -9,5 +10,6 @@ def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     if not logger.handlers:
         logger.addHandler(handler)
     return logger
+
 
 logger = setup_logger(__name__)

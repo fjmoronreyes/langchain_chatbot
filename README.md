@@ -1,13 +1,5 @@
 # turing_challenge_test
 
-*Tip
+This small repository has two main modules: `chat_bot_code`, intended to store the scripts to run the chatbot, and `img_classification`, which stores the image detection service.
 
-Es posible que los imports de langchain estén deprecados. Para ello:
-
-pip install langchain-cli
-langchain-cli --version  # Asegúrate de que la versión sea al menos 0.0.22
-
-Utiliza langchain-cli para actualizar los importadores de tu código automáticamente.
-
-langchain-cli migrate --diff .  # Previsualizar cambios
-langchain-cli migrate .  # Aplicar cambios
+Each module contains its own README file that provides detailed instructions on how to set up, run, and use the respective functionalities. Please refer to the respective README files in each module for comprehensive guidance.

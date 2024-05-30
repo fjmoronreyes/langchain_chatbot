@@ -1,1 +1,4 @@
 ultralytics
+flask
+pandas
+pillow
